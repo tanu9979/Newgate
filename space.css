@@ -4,23 +4,89 @@ body {
     background: radial-gradient(ellipse at center, #0a0a2e 0%, #000 100%);
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: 'Courier New', monospace;
     color: #fff;
+    overflow: hidden;
 }
 
-h1 {
+#game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+#title {
     font-size: 2.2rem;
     color: #00ffff;
     text-shadow: 0 0 10px #00ffff, 0 0 30px #0066ff;
     letter-spacing: 8px;
-    margin-bottom: 10px;
+    animation: pulse 2.5s ease-in-out infinite;
 }
+
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 10px #00ffff, 0 0 25px #0066ff; }
+    50%       { text-shadow: 0 0 20px #00ffff, 0 0 50px #00aaff, 0 0 80px #0044ff; }
+}
+
+#hud {
+    display: flex;
+    gap: 28px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #667;
+}
+
+#hud .hud-item span { color: #00ffff; font-weight: bold; margin-left: 5px; }
+#lives-display { color: #ff4455 !important; letter-spacing: 4px; }
 
 #board {
     border: 1px solid #1a3a5c;
-    box-shadow: 0 0 40px rgba(0, 100, 255, 0.25);
+    box-shadow: 0 0 40px rgba(0,100,255,0.25);
     display: block;
+}
+
+#overlay {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -44%);
+    background: rgba(0, 3, 18, 0.94);
+    border: 1px solid #00ffff;
+    border-radius: 6px;
+    padding: 38px 52px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 0 30px rgba(0,255,255,0.25);
+    min-width: 290px;
+    margin-top: 44px;
+}
+
+#overlay-title { font-size: 1.7rem; color: #00ffff; letter-spacing: 4px; }
+#overlay-msg   { color: #778; font-size: 0.88rem; }
+#overlay-score { color: #fff; font-size: 0.95rem; min-height: 1.2em; }
+
+#overlay-btn {
+    background: transparent;
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    padding: 11px 34px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+#overlay-btn:hover { background: #00ffff; color: #000; box-shadow: 0 0 20px rgba(0,255,255,.5); }
+
+.controls-hint { color: #333; font-size: 0.72rem; }
+
+@media (max-width: 540px) {
+    #title { font-size: 1.3rem; letter-spacing: 4px; }
+    #overlay { padding: 24px 28px; min-width: 220px; }
 }

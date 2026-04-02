@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="space.css">
 </head>
 <body>
-    <h1>Space Invaders</h1>
-    <canvas id="board"></canvas>
+    <div id="game-wrapper">
+        <h1 id="title">SPACE INVADERS</h1>
+        <div id="hud">
+            <div class="hud-item">SCORE <span id="score-display">0</span></div>
+            <div class="hud-item">LEVEL <span id="level-display">1</span></div>
+            <div class="hud-item">HIGH <span id="high-display">0</span></div>
+            <div class="hud-item">LIVES <span id="lives-display">&#9830;&#9830;&#9830;</span></div>
+        </div>
+        <canvas id="board"></canvas>
+        <div id="overlay">
+            <h2 id="overlay-title">SPACE INVADERS</h2>
+            <p id="overlay-msg">Defend Earth from the alien invasion!</p>
+            <div id="overlay-score"></div>
+            <button id="overlay-btn">START GAME</button>
+            <p class="controls-hint">&#8592; &#8594; to move &nbsp;|&nbsp; Space to shoot</p>
+        </div>
+    </div>
     <script src="space.js"></script>
 </body>
 </html>
