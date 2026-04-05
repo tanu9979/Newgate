@@ -98,6 +98,7 @@ function update(){
     }
     ctx.fillStyle="rgba(0,255,255,0.7)";ctx.font="bold 13px Courier New";
     ctx.fillText("Score: "+score,5,20);
+    ctx.fillText("Lives: "+"♦".repeat(lives),boardWidth/2-40,20);
     ctx.fillText("Level: "+level,boardWidth-80,20);
 }
 
