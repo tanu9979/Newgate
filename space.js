@@ -18,7 +18,7 @@ let bulletArray=[],bulletVelocityY=-10;
 let alienBullets=[],alienShootTimer=0,alienShootInterval=90;
 let particles=[];
 let score=0,level=1,gameState='start';
-let highScore=parseInt(localStorage.getItem('spaceHigh'))||0;
+let highScore=parseInt(localStorage.getItem('spaceHigh'))||0, gamesPlayed=parseInt(localStorage.getItem('spaceGames'))||0;
 let stars=[];
 let audioCtx=null;
 
