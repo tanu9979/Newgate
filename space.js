@@ -16,7 +16,6 @@ let alienArray=[],alienWidth=tileSize*2,alienHeight=tileSize;
 let alienRows,alienColumns,alienCount=0,alienVelocityX=1;
 let bulletArray=[],bulletVelocityY=-10;
 let alienBullets=[],alienShootTimer=0,alienShootInterval=90;
-let particles=[];
 let score=0,level=1,gameState='start';
 let highScore=parseInt(localStorage.getItem('spaceHigh'))||0;
 let stars=[];
@@ -119,21 +118,17 @@ function update(){
 
     for(let bullet of bulletArray){
         bullet.y+=bulletVelocityY;
-        ctx.fillStyle='rgba(0,255,255,0.95)';ctx.shadowColor='#00ffff';ctx.shadowBlur=8;
+        ctx.fillStyle='#00ffff';ctx.shadowColor='#00ffff';ctx.shadowBlur=12;
         ctx.fillRect(bullet.x,bullet.y,bullet.width,bullet.height);ctx.shadowBlur=0;
         for(let a of alienArray){
             if(!bullet.used&&a.alive&&detectCollision(bullet,a)){
                 bullet.used=true;a.alive=false;alienCount--;score+=a.points;
-                const px=a.x+a.width/2,py=a.y+a.height/2;
-                for(let pi=0;pi<12;pi++){const ang=Math.PI*2/12*pi,sp=1.5+Math.random()*2.5;particles.push({x:px,y:py,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,life:1,decay:0.03,size:2+Math.random()*2,color:'#ffff44'});}
                 if(score>highScore){highScore=score;localStorage.setItem('spaceHigh',highScore);}
                 updateHUD();
             }
         }
     }
     bulletArray=bulletArray.filter(b=>!b.used&&b.y>0);
-    particles=particles.filter(p=>p.life>0);
-    particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=0.06;p.life-=p.decay;ctx.globalAlpha=p.life;ctx.fillStyle=p.color;ctx.fillRect(p.x-p.size/2,p.y-p.size/2,p.size,p.size);});ctx.globalAlpha=1;
     if(alienCount===0){
         level++;score+=alienColumns*alienRows*100;
         alienColumns=Math.min(alienColumns+1,columns/2-2);
