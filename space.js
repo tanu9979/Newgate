@@ -118,7 +118,7 @@ function update(){
 
     for(let bullet of bulletArray){
         bullet.y+=bulletVelocityY;
-        ctx.fillStyle='#00ffff';ctx.shadowColor='#00ffff';ctx.shadowBlur=12;
+        ctx.fillStyle='rgba(0,255,255,0.95)';ctx.shadowColor='#00ffff';ctx.shadowBlur=8;
         ctx.fillRect(bullet.x,bullet.y,bullet.width,bullet.height);ctx.shadowBlur=0;
         for(let a of alienArray){
             if(!bullet.used&&a.alive&&detectCollision(bullet,a)){
