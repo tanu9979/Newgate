@@ -134,7 +134,7 @@ function update(){
         alienColumns=Math.min(alienColumns+1,columns/2-2);
         alienRows=Math.min(alienRows+1,rows-4);
         alienVelocityX=alienVelocityX>0?1+level*0.15:-(1+level*0.15);
-        alienShootInterval=Math.max(40,90-level*5);
+        alienShootInterval=Math.max(40,90-level*5); // harder each level
         bulletArray=[];alienBullets=[];
         if(score>highScore){highScore=score;localStorage.setItem('spaceHigh',highScore);}
         createAliens();updateHUD();
