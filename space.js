@@ -216,7 +216,6 @@ function update(){
         createAliens();updateHUD();
     }
 }
-// Web Audio sound added
 function canvas_flash(){
     board.style.boxShadow='0 0 50px #00ffff';
     setTimeout(()=>{board.style.boxShadow='0 0 40px rgba(0,100,255,0.25)';},600);
