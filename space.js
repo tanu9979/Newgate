@@ -208,7 +208,7 @@ function update(){
         alienColumns=Math.min(alienColumns+1,columns/2-2);
         alienRows=Math.min(alienRows+1,rows-4);
         alienVelocityX=alienVelocityX>0?1+level*0.15:-(1+level*0.15);
-        alienShootInterval=Math.max(35,95-level*6);
+        alienShootInterval=Math.max(38,90-level*5);
         bulletArray=[];alienBullets=[];
         if(score>highScore){highScore=score;localStorage.setItem('spaceHigh',highScore);}
         playSound('levelup');
